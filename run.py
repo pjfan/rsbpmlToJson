@@ -7,6 +7,11 @@ import httplib
 
 app = flask.Flask(__name__)
 
+@app.route('/')
+def landing_message():
+    message = {"Message": "Welcome to the RSBP to Json converter. Simply add a biobrick part id after the trailing '/' in the url to retrieve part information in json."}
+    return flask.jsonify(**message)
+
 @app.route('/<bb_name>')
 def send_BBaJson(bb_name):
     """Input: a biobrick name Ex. BBa_B0034 
@@ -56,5 +61,5 @@ def seek_children(root, json_dict):
 
 
 if __name__ == '__main__':
-    app.debug = True
+    # app.debug = True
     app.run()
