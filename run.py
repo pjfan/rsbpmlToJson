@@ -57,7 +57,7 @@ def seek_children(root, json_dict):
             for child in root:
                 child_dict = {}
                 seek_children(child, child_dict)
-                child_list.append(child_dict[root[0].tag])
+                child_list.append(child_dict)
             #Adding the {child_tagname:child_list} dictionary as the child of the root tag. 
             json_dict[root.tag] = {root[0].tag:child_list}
         #This else block adds the current root to the json_dict argument then calls seek_children() on each of its children.
